@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<InventoryManageMate.DTO.Models.OrderDetail>
+
+<h1 class="text-center">Order History</h1>
+
+<div class="text-end mt-3">
+    <a asp-controller="OrderDetails" asp-action="Add" class="btn btn-success">Add An Order</a>
+    <a asp-controller="OrderDetails" asp-action="ExportToCsv" class="btn btn-info ms-2">Download CSV</a>
+    <a asp-controller="OrderDetails" asp-action="ExportToPdf" class="btn btn-danger ms-2">Download PDF</a>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var orderDetail in Model)
+                    {
+                        <tr>
+                            <td>@orderDetail.ProductName</td>
+                            <td>@orderDetail.Quantity</td>
+                            <td>@orderDetail.UnitPrice</td>
+                            <td>@(orderDetail.Quantity * orderDetail.UnitPrice)</td>
+                            <td>
+                                <a asp-controller="OrderDetails" asp-action="Edit" asp-route-id="@orderDetail.OrderDetailID" class="btn btn-primary">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

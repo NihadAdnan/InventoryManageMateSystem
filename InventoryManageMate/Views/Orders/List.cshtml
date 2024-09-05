@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<InventoryManageMate.DTO.Models.Order>
+
+
+<h1 class="text-center">Order History</h1>
+
+<div class="text-end mt-3">
+    <a asp-controller="Orders" asp-action="Add" class="btn btn-success">Add An Order</a>
+    <a asp-controller="Orders" asp-action="ExportToCsv" class="btn btn-info ms-2">Download CSV</a>
+    <a asp-controller="Orders" asp-action="ExportToPdf" class="btn btn-danger ms-2">Download PDF</a>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Total Amount</th>
+                        <th>Payment Method</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>@order.CustomerName</td>
+                            <td>@order.CustomerEmail</td>
+                            <td>@order.ShippingAddress</td>
+                            <td>@order.TotalAmount</td>
+                            <td>@order.PaymentMethod</td>
+                            <td>
+                                <a asp-controller="Orders" asp-action="Edit" asp-route-id="@order.OrderID" class="btn btn-primary">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
