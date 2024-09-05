@@ -6,16 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InventoryManageMate.AggregateRoot;
 
 namespace InventoryManageMate.Handler.Services
 {
     public class OrderHandler : IOrderHandler
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly ExportService _exportService;
 
-        public OrderHandler(IOrderRepository orderRepository)
+        public OrderHandler(IOrderRepository orderRepository, ExportService exportService)
         {
             _orderRepository = orderRepository;
+            _exportService = exportService;
         }
 
         public async Task<List<Order>> GetAllOrdersAsync()
@@ -45,6 +48,16 @@ namespace InventoryManageMate.Handler.Services
             {
                 await _orderRepository.DeleteOrderAsync(order);
             }
+        }
+        public async Task<byte[]> ExportOrdersToCsvAsync()
+        {
+            var orders = await _orderRepository.GetOrdersAsync(); // Fetch data
+            return _exportService.ExportOrdersToCsv(orders); // Export using ExportService
+        }
+        public async Task<byte[]> ExportOrdersToPdfAsync()
+        {
+            var orders = await _orderRepository.GetOrdersAsync(); // Fetch data
+            return _exportService.ExportOrdersToPdf(orders); // Export using ExportService
         }
     }
 }
