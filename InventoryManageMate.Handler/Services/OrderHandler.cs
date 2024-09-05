@@ -51,13 +51,13 @@ namespace InventoryManageMate.Handler.Services
         }
         public async Task<byte[]> ExportOrdersToCsvAsync()
         {
-            var orders = await _orderRepository.GetOrdersAsync(); // Fetch data
-            return _exportService.ExportOrdersToCsv(orders); // Export using ExportService
+            var orders = await _orderRepository.GetOrdersAsync(); 
+            return _exportService.ExportOrdersToCsv(orders); 
         }
         public async Task<byte[]> ExportOrdersToPdfAsync()
         {
-            var orders = await _orderRepository.GetOrdersAsync(); // Fetch data
-            return _exportService.ExportOrdersToPdf(orders); // Export using ExportService
+            var orders = await _orderRepository.GetOrdersAsync(); 
+            return _exportService.ExportOrdersToPdf(orders); 
         }
     }
 }

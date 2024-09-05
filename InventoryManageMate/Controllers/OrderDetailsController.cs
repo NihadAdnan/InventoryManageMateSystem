@@ -1,5 +1,4 @@
-﻿using InventoryManageMate.AggregateRoot;
-using InventoryManageMate.DTO.Models;
+﻿using InventoryManageMate.DTO.Models;
 using InventoryManageMate.Handler.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,12 +9,10 @@ namespace InventoryManageMate.Controllers
     public class OrderDetailsController : Controller
     {
         private readonly OrderDetailHandler _orderDetailHandler;
-        private readonly ExportService _exportService;
 
-        public OrderDetailsController(OrderDetailHandler orderDetailHandler, ExportService exportService)
+        public OrderDetailsController(OrderDetailHandler orderDetailHandler)
         {
             _orderDetailHandler = orderDetailHandler;
-            _exportService = exportService;
         }
 
         [HttpGet]
@@ -66,16 +63,14 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToCsv()
         {
-            var orderDetails = await _orderDetailHandler.GetOrderDetailsAsync();
-            var fileContent = _exportService.ExportOrderDetailsToCsv(orderDetails);
+            var fileContent = await _orderDetailHandler.ExportOrderDetailsToCsvAsync();
             return File(fileContent, "text/csv", "OrderDetails.csv");
         }
 
         [HttpGet]
         public async Task<IActionResult> ExportToPdf()
         {
-            var orderDetails = await _orderDetailHandler.GetOrderDetailsAsync();
-            var fileContent = _exportService.ExportOrderDetailsToPdf(orderDetails);
+            var fileContent = await _orderDetailHandler.ExportOrderDetailsToPdfAsync();
             return File(fileContent, "application/pdf", "OrderDetails.pdf");
         }
 
