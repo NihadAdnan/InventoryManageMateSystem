@@ -11,7 +11,6 @@ namespace InventoryManageMate.AggregateRoot
 {
     public class ExportService
     {
-        // Export Orders to CSV format using OrderDto
         public byte[] ExportOrdersToCsv(List<OrderDto> orders)
         {
             var builder = new StringBuilder();
@@ -25,7 +24,6 @@ namespace InventoryManageMate.AggregateRoot
             return Encoding.UTF8.GetBytes(builder.ToString());
         }
 
-        // Export Orders to PDF format using OrderDto
         public byte[] ExportOrdersToPdf(List<OrderDto> orders)
         {
             using (MemoryStream stream = new MemoryStream())
@@ -34,7 +32,7 @@ namespace InventoryManageMate.AggregateRoot
                 PdfWriter.GetInstance(pdfDoc, stream).CloseStream = false;
                 pdfDoc.Open();
 
-                PdfPTable table = new PdfPTable(5); // Adjust the number of columns according to OrderDto fields
+                PdfPTable table = new PdfPTable(5); 
                 table.WidthPercentage = 100;
                 table.AddCell(new PdfPCell(new Phrase("Name")) { HorizontalAlignment = Element.ALIGN_CENTER, BackgroundColor = BaseColor.LIGHT_GRAY });
                 table.AddCell(new PdfPCell(new Phrase("Email")) { HorizontalAlignment = Element.ALIGN_CENTER, BackgroundColor = BaseColor.LIGHT_GRAY });
@@ -58,7 +56,6 @@ namespace InventoryManageMate.AggregateRoot
             }
         }
 
-        // Export Order Details to CSV format using OrderDetailDto
         public byte[] ExportOrderDetailsToCsv(List<OrderDetailDto> orderDetails)
         {
             var builder = new StringBuilder();
@@ -72,7 +69,6 @@ namespace InventoryManageMate.AggregateRoot
             return Encoding.UTF8.GetBytes(builder.ToString());
         }
 
-        // Export Order Details to PDF format using OrderDetailDto
         public byte[] ExportOrderDetailsToPdf(List<OrderDetailDto> orderDetails)
         {
             using (MemoryStream stream = new MemoryStream())
@@ -81,7 +77,7 @@ namespace InventoryManageMate.AggregateRoot
                 PdfWriter.GetInstance(pdfDoc, stream).CloseStream = false;
                 pdfDoc.Open();
 
-                PdfPTable table = new PdfPTable(3); // 3 columns for OrderDetailDto fields
+                PdfPTable table = new PdfPTable(3); 
                 table.WidthPercentage = 100;
                 table.AddCell(new PdfPCell(new Phrase("Product Name")) { HorizontalAlignment = Element.ALIGN_CENTER, BackgroundColor = BaseColor.LIGHT_GRAY });
                 table.AddCell(new PdfPCell(new Phrase("Quantity")) { HorizontalAlignment = Element.ALIGN_CENTER, BackgroundColor = BaseColor.LIGHT_GRAY });

@@ -15,7 +15,7 @@ namespace InventoryManageMate.Handler.Services
         Task AddOrderDetailAsync(OrderDetailDto orderDetailDto);
         Task UpdateOrderDetailAsync(OrderDetailDto orderDetailDto);
         Task DeleteOrderDetailAsync(Guid id);
-        Task<byte[]> ExportOrderDetailsToCsvAsync(); // Export orders to CSV using DTOs
+        Task<byte[]> ExportOrderDetailsToCsvAsync(); 
         Task<byte[]> ExportOrderDetailsToPdfAsync();
     }
 }

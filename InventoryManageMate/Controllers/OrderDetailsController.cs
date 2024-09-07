@@ -18,7 +18,6 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            // Fetch list of order details using DTOs
             var orderDetails = await _orderDetailHandler.GetOrderDetailsAsync();
             return View(orderDetails);
         }
@@ -26,14 +25,12 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            // Render the Add view
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(OrderDetailDto orderDetailDto)
         {
-            // Add new order detail using DTO
             await _orderDetailHandler.AddOrderDetailAsync(orderDetailDto);
             return RedirectToAction("List");
         }
@@ -41,7 +38,6 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            // Fetch the order detail by ID using DTO
             var orderDetail = await _orderDetailHandler.GetOrderDetailByIdAsync(id);
             if (orderDetail == null)
             {
@@ -53,7 +49,6 @@ namespace InventoryManageMate.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(OrderDetailDto orderDetailDto)
         {
-            // Update the order detail using DTO
             await _orderDetailHandler.UpdateOrderDetailAsync(orderDetailDto);
             return RedirectToAction("List");
         }
@@ -61,7 +56,6 @@ namespace InventoryManageMate.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
-            // Delete the order detail by ID
             await _orderDetailHandler.DeleteOrderDetailAsync(id);
             return RedirectToAction("List");
         }
@@ -69,7 +63,6 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToCsv()
         {
-            // Export order details to CSV
             var fileContent = await _orderDetailHandler.ExportOrderDetailsToCsvAsync();
             return File(fileContent, "text/csv", "OrderDetails.csv");
         }
@@ -77,7 +70,6 @@ namespace InventoryManageMate.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToPdf()
         {
-            // Export order details to PDF
             var fileContent = await _orderDetailHandler.ExportOrderDetailsToPdfAsync();
             return File(fileContent, "application/pdf", "OrderDetails.pdf");
         }

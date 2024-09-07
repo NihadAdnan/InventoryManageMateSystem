@@ -18,7 +18,7 @@ namespace InventoryManageMate.Controllers
         public async Task<IActionResult> List()
         {
             var orders = await _orderHandler.GetAllOrdersAsync();
-            return View(orders); // Ensure your view is updated to handle OrderDto
+            return View(orders);
         }
 
         [HttpGet]
@@ -32,7 +32,7 @@ namespace InventoryManageMate.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _orderHandler.AddOrderAsync(orderDto); // Use OrderDto
+                await _orderHandler.AddOrderAsync(orderDto);
                 return RedirectToAction("List");
             }
             return View(orderDto);
@@ -46,7 +46,7 @@ namespace InventoryManageMate.Controllers
             {
                 return NotFound();
             }
-            return View(orderDto); // Ensure your view is updated to handle OrderDto
+            return View(orderDto); 
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace InventoryManageMate.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _orderHandler.UpdateOrderAsync(orderDto); // Use OrderDto
+                await _orderHandler.UpdateOrderAsync(orderDto); 
                 return RedirectToAction("List");
             }
             return View(orderDto);
