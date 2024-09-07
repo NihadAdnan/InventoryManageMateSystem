@@ -10,7 +10,7 @@
 @{
 }
 
-@model InventoryManageMate.DTO.Models.Order
+@model InventoryManageMate.DTO.DTOs.OrderDto
 
 <h1 class="text-center">Edit Order</h1>
 
@@ -39,29 +39,8 @@ else
         </div>
 
         <div class="mt-3">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input type="tel" id="phone" class="form-control" required asp-for="CustomerPhone" readonly />
-        </div>
-
-        <div class="mt-3">
             <label for="address" class="form-label">Shipping Address</label>
             <input type="text" id="address" class="form-control" required asp-for="ShippingAddress" />
-        </div>
-
-        <div class="mt-3">
-            <label for="date" class="form-label">Order Date</label>
-            <input type="date" id="date" class="form-control" required asp-for="OrderDate" readonly />
-        </div>
-
-        <div class="mt-3">
-            <label for="status" class="form-label">Order Status</label>
-            <select id="status" class="form-select" required asp-for="OrderStatus">
-                <option value="Pending">Pending</option>
-                <option value="Processing">Processing</option>
-                <option value="Shipped">Shipped</option>
-                <option value="Delivered">Delivered</option>
-                <option value="Cancelled">Cancelled</option>
-            </select>
         </div>
 
 

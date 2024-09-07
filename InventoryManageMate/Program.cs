@@ -1,4 +1,6 @@
+using AutoMapper;
 using InventoryManageMate.AggregateRoot;
+using InventoryManageMate.DTO.MappingProfile;
 using InventoryManageMate.Handler.Services;
 using InventoryManageMate.Repository.Data;
 using InventoryManageMate.Repository.Repositories;
@@ -10,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("InventoryManageMateSystem")));
+
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
 builder.Services.AddScoped<IOrderHandler, OrderHandler>();
 builder.Services.AddScoped<OrderHandler>();
