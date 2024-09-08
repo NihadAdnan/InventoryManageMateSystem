@@ -35,7 +35,7 @@
                             <input type="number" id="amount" class="mt-1 p-2 border border-gray-300 rounded-md w-full" step="0.01" required asp-for="UnitPrice" />
                         </div>
 
-                        <div class="flex space-x-4 mt-5">
+                        <div class="relative mt-5 flex justify-between">
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>
                             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600" asp-action="Delete" asp-controller="OrderDetails" asp-route-id="@Model.OrderDetailID">Delete</button>
                         </div>

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using InventoryManageMate.DTO.DTOs;
-using InventoryManageMate.DTO.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 

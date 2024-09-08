@@ -32,8 +32,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">@orderDetail.Quantity</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">@orderDetail.UnitPrice</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">@(@orderDetail.Quantity * orderDetail.UnitPrice)</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a asp-controller="OrderDetails" asp-action="Edit" asp-route-id="@orderDetail.OrderDetailID" class="text-blue-500 hover:text-blue-700">Edit</a>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <a asp-controller="OrderDetails" asp-action="Edit" asp-route-id="@orderDetail.OrderDetailID" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 transition">Edit</a>
                                     </td>
                                 </tr>
                             }
