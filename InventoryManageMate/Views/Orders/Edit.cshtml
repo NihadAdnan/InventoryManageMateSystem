@@ -52,9 +52,8 @@
 
                         <div class="relative mt-5 flex justify-between">
                             <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 w-full sm:w-auto">Save</button>
-                            <form method="post" asp-action="Delete" asp-controller="Orders" asp-route-id="@Model.OrderID" class="inline">
-                                <button type="submit" class="bg-red-500 text-white rounded-md px-4 py-2 sm:ml-3">Delete</button>
-                            </form>
+                            
+                            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600" asp-action="Delete" asp-controller="Orders" asp-route-id="@Model.OrderID">Delete</button>
                         </div>
                     </form>
                 }
